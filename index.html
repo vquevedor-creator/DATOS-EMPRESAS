@@ -384,9 +384,6 @@ input[type="text"][readonly] {
   width: 0%;
   transition: width .4s ease;
 }
-.card-body .progress-wrap { padding-left: 0; padding-right: 0; }
-.card-body .btn-wrap { padding: 18px 0 0; }
-
 .progress-label {
   font-size: 11px;
   color: var(--muted);
@@ -441,8 +438,15 @@ input[type="text"][readonly] {
 
 <main>
 
-  <!-- PDF + Código Central (sin cabecera) -->
+  <!-- STEP 1: Upload -->
   <div class="card">
+    <div class="card-head">
+      <div class="card-icon icon-blue">📄</div>
+      <div class="card-head-text">
+        <h3>1. Selecciona el PDF</h3>
+        <p>Formulario Alta BBVA Empresas (en blanco)</p>
+      </div>
+    </div>
     <div class="card-body">
       <div class="drop-zone" id="drop-zone">
         <input type="file" id="pdf-input" accept=".pdf">
@@ -453,9 +457,22 @@ input[type="text"][readonly] {
         </div>
         <div class="file-pill" id="file-pill"></div>
       </div>
-      <div class="field-group single" style="margin-top:20px">
+    </div>
+  </div>
+
+  <!-- STEP 2: Código Central -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon icon-blue">🔑</div>
+      <div class="card-head-text">
+        <h3>2. Código Central del cliente</h3>
+        <p>Único dato que cambia por operación</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="field-group single">
         <div class="field">
-          <label>Código Central</label>
+          <label>Código Central <span class="badge-req">REQUERIDO</span> — máx. 8 caracteres</label>
           <input
             type="text"
             id="codigo_central"
@@ -467,27 +484,15 @@ input[type="text"][readonly] {
           >
         </div>
       </div>
-      <div class="progress-wrap" id="progress-wrap">
-        <div class="progress-bar">
-          <div class="progress-fill" id="progress-fill"></div>
-        </div>
-        <div class="progress-label" id="progress-label">Iniciando…</div>
-      </div>
-      <div class="btn-wrap">
-        <button class="submit-btn" id="submit-btn" onclick="generatePDF()">
-          <div class="spinner" id="spinner"></div>
-          <span id="btn-text">⬇️&nbsp; Generar PDF llenado</span>
-        </button>
-      </div>
     </div>
   </div>
 
-  <!-- Datos fijos -->
+  <!-- STEP 3: Fixed data -->
   <div class="card">
     <div class="card-head">
       <div class="card-icon icon-teal">⚙️</div>
       <div class="card-head-text">
-        <h3>1. Datos del ejecutivo</h3>
+        <h3>3. Datos del ejecutivo</h3>
         <p>Precargados automáticamente — solo lectura</p>
       </div>
     </div>
@@ -526,6 +531,52 @@ input[type="text"][readonly] {
           <input type="text" id="fecha-display" readonly>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div class="card">
+    <div class="card-head">
+      <div class="card-icon icon-green">✅</div>
+      <div class="card-head-text">
+        <h3>Páginas que se llenan</h3>
+        <p>El resto del PDF queda intacto</p>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="pages-grid">
+        <div class="page-item">
+          <div class="page-num">PDF · Página 2</div>
+          <div class="page-title">Para Uso Exclusivo del Banco</div>
+          <div class="page-fields">Cód. Central · Oficina · Ejecutivo · Registro · Correo</div>
+        </div>
+        <div class="page-item">
+          <div class="page-num">Contrato · Página 13</div>
+          <div class="page-title">Firma del contrato</div>
+          <div class="page-fields">Funcionario · Oficina · Registro · Localidad · Fecha</div>
+        </div>
+        <div class="page-item">
+          <div class="page-num">Contrato · Página 14</div>
+          <div class="page-title">Declaración Jurada ITF</div>
+          <div class="page-fields">Ciudad · Día · Mes · Año</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Generate -->
+  <div class="card">
+    <div class="progress-wrap" id="progress-wrap">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+      <div class="progress-label" id="progress-label">Iniciando…</div>
+    </div>
+    <div class="btn-wrap" style="padding-top:28px">
+      <button class="submit-btn" id="submit-btn" onclick="generatePDF()">
+        <div class="spinner" id="spinner"></div>
+        <span id="btn-text">⬇️&nbsp; Generar PDF llenado</span>
+      </button>
     </div>
   </div>
 
