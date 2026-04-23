@@ -3,18 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Herramienta local para completar campos en un PDF de alta empresarial desde tu navegador. No pide contraseñas ni acceso bancario; el archivo no se sube a ningún servidor.">
-<title>DATOS EMPRESAS</title>
+<title>DATOS NETCASH</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
 :root {
-  /* Paleta genérica (evita clonar colores corporativos de entidades financieras) */
-  --navy:   #1e3a5f;
-  --blue:   #1e40af;
-  --mid:    #2563eb;
-  --sky:    #0ea5e9;
-  --sky2:   #0284c7;
+  --navy:   #003f7f;
+  --blue:   #004481;
+  --mid:    #1464A0;
+  --sky:    #2DCCCD;
+  --sky2:   #1da8a8;
   --ink:    #0d1f35;
   --muted:  #5c6f82;
   --line:   #d6e2ef;
@@ -428,43 +426,14 @@ input[type="text"][readonly] {
   .pages-grid { grid-template-columns: 1fr; }
   .header-badge { display: none; }
 }
-
-/* Aviso de legitimidad — visible arriba, estilo distinto al “portal bancario” */
-.trust-banner {
-  width: 100%;
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 12px 20px;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-  border: 1px solid #f59e0b;
-  border-radius: 0 0 12px 12px;
-  color: #78350f;
-  font-size: 13px;
-  line-height: 1.55;
-  box-shadow: 0 4px 14px rgba(180, 83, 9, 0.12);
-}
-.trust-banner strong { color: #92400e; }
-.trust-banner ul {
-  margin: 8px 0 0 18px;
-  padding: 0;
-}
-.trust-banner li { margin: 4px 0; }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo" style="font-size:16px;font-style:normal;letter-spacing:0.06em;">DATOS EMPRESAS</div>
-  <div class="header-badge">100 % local</div>
+  <div class="logo" style="font-size:16px;font-style:normal;letter-spacing:0.06em;">DATOS NETCASH</div>
+  <div class="header-badge">Solo cliente</div>
 </header>
-
-<div class="trust-banner" role="status">
-  <strong>Esta página no es un banco ni pide acceso a cuentas.</strong> Es una utilidad para escribir texto en un PDF que <em>tú</em> eliges en tu equipo. No se envían archivos ni datos a ningún servidor; todo ocurre en tu navegador.
-  <ul>
-    <li>No introduce usuario, contraseña ni token de ninguna entidad.</li>
-    <li>No está afiliada a bancos ni marcas financieras.</li>
-  </ul>
-</div>
 
 <main>
 
@@ -474,7 +443,7 @@ input[type="text"][readonly] {
       <div class="card-icon icon-blue">📄</div>
       <div class="card-head-text">
         <h3>1. Selecciona el PDF</h3>
-        <p>PDF de alta empresarial en blanco (el que uses habitualmente en tu oficina)</p>
+        <p>Formulario Alta BBVA Empresas (en blanco)</p>
       </div>
     </div>
     <div class="card-body">
@@ -490,19 +459,19 @@ input[type="text"][readonly] {
     </div>
   </div>
 
-  <!-- STEP 2: Código de operación -->
+  <!-- STEP 2: Código Central -->
   <div class="card">
     <div class="card-head">
       <div class="card-icon icon-blue">🔑</div>
       <div class="card-head-text">
-        <h3>2. Código de la operación</h3>
-        <p>Referencia corta que cambia en cada trámite (máx. 8 caracteres)</p>
+        <h3>2. Código Central del cliente</h3>
+        <p>Único dato que cambia por operación</p>
       </div>
     </div>
     <div class="card-body">
       <div class="field-group single">
         <div class="field">
-          <label>Código <span class="badge-req">REQUERIDO</span> — máx. 8 caracteres</label>
+          <label>Código Central <span class="badge-req">REQUERIDO</span> — máx. 8 caracteres</label>
           <input
             type="text"
             id="codigo_central"
@@ -530,31 +499,31 @@ input[type="text"][readonly] {
       <div class="field-group">
         <div class="field">
           <label>Nombre del ejecutivo <span class="badge-auto">AUTO</span></label>
-          <input type="text" id="ui_ejecutivo" value="" readonly aria-label="Nombre del ejecutivo">
+          <input type="text" value="VICTOR QUEVEDO" readonly>
         </div>
         <div class="field">
           <label>Registro <span class="badge-auto">AUTO</span></label>
-          <input type="text" id="ui_registro" value="" readonly aria-label="Registro">
+          <input type="text" value="P024101" readonly>
         </div>
         <div class="field">
           <label>Nombre de la oficina <span class="badge-auto">AUTO</span></label>
-          <input type="text" id="ui_oficina_nombre" value="" readonly aria-label="Nombre de la oficina">
+          <input type="text" value="TARAPOTO" readonly>
         </div>
         <div class="field">
           <label>Código de la oficina <span class="badge-auto">AUTO</span></label>
-          <input type="text" id="ui_oficina_codigo" value="" readonly aria-label="Código de la oficina">
+          <input type="text" value="0310" readonly>
         </div>
       </div>
       <div class="field-group single" style="margin-top:14px">
         <div class="field">
           <label>Correo electrónico <span class="badge-auto">AUTO</span></label>
-          <input type="text" id="ui_correo" value="" readonly aria-label="Correo electrónico">
+          <input type="text" value="VICTOR.QUEVEDO@BBVA.COM" readonly>
         </div>
       </div>
       <div class="field-group thirds" style="margin-top:14px">
         <div class="field">
           <label>Localidad <span class="badge-auto">AUTO</span></label>
-          <input type="text" id="ui_localidad" value="" readonly aria-label="Localidad">
+          <input type="text" value="TARAPOTO" readonly>
         </div>
         <div class="field">
           <label>Fecha <span class="badge-auto">HOY</span></label>
@@ -577,8 +546,8 @@ input[type="text"][readonly] {
       <div class="pages-grid">
         <div class="page-item">
           <div class="page-num">PDF · Página 2</div>
-          <div class="page-title">Bloque de datos internos (pág. 2 del PDF)</div>
-          <div class="page-fields">Código · Oficina · Ejecutivo · Registro · Correo</div>
+          <div class="page-title">Para Uso Exclusivo del Banco</div>
+          <div class="page-fields">Cód. Central · Oficina · Ejecutivo · Registro · Correo</div>
         </div>
         <div class="page-item">
           <div class="page-num">Contrato · Página 13</div>
@@ -627,21 +596,6 @@ const CONFIG = {
   CORREO:           'VICTOR.QUEVEDO@BBVA.COM',
   LOCALIDAD:        'TARAPOTO',
 };
-
-(function syncReadonlyFieldsFromConfig() {
-  const pairs = [
-    ['ui_ejecutivo', CONFIG.EJECUTIVO_NOMBRE],
-    ['ui_registro', CONFIG.REGISTRO],
-    ['ui_oficina_nombre', CONFIG.OFICINA_NOMBRE],
-    ['ui_oficina_codigo', CONFIG.OFICINA_CODIGO],
-    ['ui_correo', CONFIG.CORREO],
-    ['ui_localidad', CONFIG.LOCALIDAD],
-  ];
-  for (const [id, v] of pairs) {
-    const el = document.getElementById(id);
-    if (el) el.value = v;
-  }
-})();
 
 /** Milímetros (medición típica del PDF) → puntos pdf-lib (origen abajo-izquierda). */
 function mmToPt(mm) {
@@ -735,15 +689,15 @@ async function generatePDF() {
   const codigoCentral = document.getElementById('codigo_central').value.trim();
 
   if (!pdfBytes) {
-    showToast('Primero selecciona el PDF en tu equipo', 'error'); return;
+    showToast('Primero selecciona el PDF del formulario', 'error'); return;
   }
   if (!codigoCentral) {
     document.getElementById('codigo_central').focus();
-    showToast('Ingresa el código de la operación', 'error'); return;
+    showToast('Ingresa el Código Central del cliente', 'error'); return;
   }
   if (codigoCentral.length > 8) {
     document.getElementById('codigo_central').focus();
-    showToast('El código admite como máximo 8 caracteres', 'error'); return;
+    showToast('El Código Central admite como máximo 8 caracteres', 'error'); return;
   }
 
   const btn = document.getElementById('submit-btn');
